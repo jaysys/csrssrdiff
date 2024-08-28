@@ -1,13 +1,9 @@
+// app/ssr-images/page.js
 import Image from "next/image";
+import { getImages } from "../../lib/db";
 
-//`${process.env.NEXT_PUBLIC_API_URL}/api/images`
-//"http://localhost:3000/api/images"
 export default async function SSRImagesPage() {
-  const response = await fetch("http://localhost:3000/api/images", {
-    cache: "no-store",
-  });
-
-  const images = await response.json();
+  const images = await getImages();
 
   return (
     <div>
